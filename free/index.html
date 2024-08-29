@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crochet Craft</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="center-content">
+        <h1>Welcome to "GlamYarn"</h1>
+        <p>Please choose your device:</p>
+        <div class="link-container">
+            <a href="https://demurestorephone.netlify.app///" class="device-link" id="phone-link">Phone</a>
+            <a href="https://demurestorelaptop.netlify.app//" class="device-link" id="laptop-link">Laptop</a>
+        </div>
+    </div>
+    <script>
+        function updateLinks() {
+            const isMobile = window.matchMedia("(max-width: 600px)").matches;
+            const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+
+            // Disable/Enable links based on device type and orientation
+            if (isMobile) {
+                document.getElementById('phone-link').style.pointerEvents = 'auto';
+                document.getElementById('laptop-link').style.pointerEvents = 'none';
+            } else {
+                document.getElementById('phone-link').style.pointerEvents = 'none';
+                document.getElementById('laptop-link').style.pointerEvents = 'auto';
+            }
+        }
+
+        // Initial call
+        updateLinks();
+
+        // Update on resize and orientation change
+        window.addEventListener('resize', updateLinks);
+        window.addEventListener('orientationchange', updateLinks);
+    </script>
+</body>
+</html>
+
